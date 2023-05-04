@@ -73,7 +73,14 @@ describe('unicafe reducer', () => {
       const newState = counterReducer(state, action)
       expect(newState).toEqual(resetState)
     })
-    test.todo('when good is nonzero')
+
+    test('when good is nonzero', () => {
+      const state = { ...initialState, good: 13}
+
+      deepFreeze(state)
+      const newState = counterReducer(state, action)
+      expect(newState).toEqual(resetState)
+    })
     test.todo('when ok is nonzero')
     test.todo('when bad is nonzero')
     test.todo('when state is random nonzero')

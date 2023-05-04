@@ -81,8 +81,35 @@ describe('unicafe reducer', () => {
       const newState = counterReducer(state, action)
       expect(newState).toEqual(resetState)
     })
-    test.todo('when ok is nonzero')
-    test.todo('when bad is nonzero')
-    test.todo('when state is random nonzero')
+    test('when ok is nonzero', () => {
+      const state = { ...initialState, ok: 7}
+
+      deepFreeze(state)
+      const newState = counterReducer(state, action)
+      expect(newState).toEqual(resetState)
+    })
+    test('when bad is nonzero', () => {
+      const state = { ...initialState, bad: 23}
+
+      deepFreeze(state)
+      const newState = counterReducer(state, action)
+      expect(newState).toEqual(resetState)
+    })
+    test('when state is random nonzero', () => {
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+      const getRandomInt = (max) => {
+        return Math.floor(Math.random() * max);
+      }
+      
+      const state = {
+        good: getRandomInt(255),
+        ok: getRandomInt(255),
+        bad: getRandomInt(255)
+      }
+
+      deepFreeze(state)
+      const newState = counterReducer(state, action)
+      expect(newState).toEqual(resetState)
+    })
   })
 })

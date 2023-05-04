@@ -56,7 +56,23 @@ describe('unicafe reducer', () => {
   })
 
   describe('zero resets stats to zero', () => {
-    test.todo('when the state is initial just zeros')
+    const action = {
+      type: 'ZERO'
+    }
+
+    const resetState = {
+      good: 0,
+      ok: 0,
+      bad: 0
+    }
+
+    test('when the state is initial just zeros', () => {
+      const state = initialState
+
+      deepFreeze(state)
+      const newState = counterReducer(state, action)
+      expect(newState).toEqual(resetState)
+    })
     test.todo('when good is nonzero')
     test.todo('when ok is nonzero')
     test.todo('when bad is nonzero')

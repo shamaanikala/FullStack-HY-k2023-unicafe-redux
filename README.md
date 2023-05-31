@@ -11,8 +11,6 @@ The application requires [Node.js](https://nodejs.org/en) installed. It was deve
 
 ## Development version
 
----
-
 Install the required packages:  
 `npm install`
 
